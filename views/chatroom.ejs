@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <% include partials/head.ejs %>
+</head>
+
+<header>
+  <div style="">
+    <h1 align="center">Chat Room</h1>
+  </div>
+
+  <% include partials/header.ejs %>
+</header>
+
+<body onload="setup();">
+  <div style="text-align:center;" class="container">
+    <div class="panel panel-default">
+      <div class="panel-body"><h2>socket.io chat room</h2>
+        <br />
+        <hr />
+        <div id="chatContent"></div>
+        <hr />
+
+        <div class="form-group" id="maindiv">
+          <div class="form-group col-xs-12">
+            <input class="form-control" id="messageInput" type="text" maxlength="50"/>
+            <button type="submit" class="btn btn-primary btn-block" onclick="send();">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="client.js"></script>
+  <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+  <script>
+
+  var username = window.prompt('Enter a username:', '');
+  function setup() {
+
+    if (!username) {
+      location.href = 'http://localhost:3000/chaterror';
+    }
+
+    if (username.length <= 1) {
+      username = 'anonymous';
+    }
+
+    socket = io();
+    socket.on('chat', (message, author) => {
+      var format = 'b';
+      var formatTwo = 'i';
+      document.getElementById('chatContent').innerHTML += '<p><' + format + '>' + message + '</' + format + '> | <' + formatTwo + '>' + author + '</' + formatTwo + '></p>';
+    });
+  }
+
+  function send() {
+    socket.emit('chat', document.getElementById('messageInput').value, username);
+    document.getElementById('messageInput').value = '';
+  }
+
+  $(document).ready(function() {
+    $(window).scroll(function() {
+      if ($(this).scrollTop() > 50) {
+        $('#back-to-top').fadeIn();
+      } else {
+        $('#back-to-top').fadeOut();
+      }
+    });
+    $('#back-to-top').click(function() {
+      $('#back-to-top').tooltip('hide');
+      $('body,html').animate({
+        scrollTop: 0
+      }, 800);
+      return false;
+    });
+    $('#back-to-top').tooltip('show');
+  });
+  </script>
+
+  <div style="position:fixed; bottom:20px; right:20px;">
+    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+  </div>
+
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+
+</body>
+
+</html>

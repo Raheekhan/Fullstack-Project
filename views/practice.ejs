@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <% include partials/head.ejs %>
+</head>
+
+<header>
+  <div style="">
+    <h1 align="center">Practice Page</h1>
+  </div>
+
+  <% include partials/header.ejs %>
+</header>
+
+<body>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Example select</label>
+      <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect2">Example multiple select</label>
+      <select multiple class="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Example textarea</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1">
+    Default checkbox
+    </label>
+    </div>
+
+  </form>
+
+  <form>
+    <div class="form-row">
+      <div class="form-group col-xs-4">
+        <label for="inputEmail4">Email</label>
+        <input type="email" class="form-control is-valid" id="inputEmail4" placeholder="Email">
+      </div>
+      <div class="form-group col-xs-4">
+        <label for="inputPassword4">Password</label>
+        <input type="password" class="form-control is-valid" id="inputPassword4" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-xs-4">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control is-valid" id="inputAddress" placeholder="1234 Main St">
+      </div>
+      <div class="form-group col-xs-4">
+        <label for="inputAddress2">Address 2</label>
+        <input type="text" class="form-control is-valid" id="inputAddress2" placeholder="Apartment, studio, or floor">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-xs-4">
+        <label for="inputCity">City</label>
+        <input type="text" class="form-control is-valid" id="inputCity">
+      </div>
+      <div class="form-group col-xs-4">
+        <label for="inputState">State</label>
+        <select id="inputState" class="form-control is-valid">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+      </div>
+      <div class="form-group col-xs-2">
+        <label for="inputZip">Zip</label>
+        <input type="text" class="form-control is-valid" id="inputZip">
+      </div>
+    </div>
+  </form>
+</div>
+
+  <!-- <div class="btn-group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Option: <span class="selection">Option 1</span><span class="caret"></span>
+  </button>
+    <ul class="dropdown-menu" role="menu">
+      <li><a href="#">Option 1</a></li>
+      <li><a href="#">Option 2</a></li>
+      <li><a href="#">Option 3</a></li>
+    </ul>
+  </div>
+
+  <script>
+    $(".dropdown-menu li a").click(function() {
+
+      $(this).parents(".btn-group").find('.selection').text($(this).text());
+      $(this).parents(".btn-group").find('.selection').val($(this).text());
+    });
+  </script> -->
+
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+
+</body>
+
+</html>

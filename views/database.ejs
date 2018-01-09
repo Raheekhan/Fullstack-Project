@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <% include partials/head.ejs %>
+</head>
+
+<header>
+  <div style="">
+    <h1 align="center">Database</h1>
+  </div>
+
+  <% include partials/header.ejs %>
+</header>
+
+<body>
+  <h1 align="center">REST API</h1> <br/>
+  <div class="container">
+    <div class="col-sm-12 pull-center well">
+      <form class="form-inline">
+        <center>
+          <select class="form-control">
+                <option>GET</option>
+                <option>POST</option>
+                <option>DELETE</option>
+        </select>
+
+          <form method="get">
+            <div class="input-group custom-search-form">
+              <input type="text" id="input-field" class="form-control" placeholder="Email or ID">
+              <span class="input-group-btn">
+              <button class="btn btn-default" id="btn-db" type="button">
+                <i>Go</i>
+              </button>
+              </span>
+            </div>
+          </form>
+      </form>
+    </div>
+  </div>
+
+  <script>
+
+  </script>
+
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+
+</body>
+
+</html>
