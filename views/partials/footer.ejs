@@ -1,1 +1,24 @@
-<p class="text-center text-muted">Copyright (c) 2017 Copyright Holder All Rights Reserved.</p>
+<script>
+$(document).ready(function() {
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 50) {
+      $('#back-to-top').fadeIn();
+    } else {
+      $('#back-to-top').fadeOut();
+    }
+  });
+  $('#back-to-top').click(function() {
+    $('#back-to-top').tooltip('hide');
+    $('body,html').animate({
+      scrollTop: 0
+    }, 800);
+    return false;
+  });
+  $('#back-to-top').tooltip('show');
+});
+</script>
+
+<div style="position:fixed; bottom:20px; right:20px;">
+  <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
+</div>
+<p class="text-center text-muted">Website created by <a href="https://github.com/Raheekhan" style="text-decoration: none">Rahee Ibrahim Khan</a></p>

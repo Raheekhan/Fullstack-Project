@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <% include partials/head.ejs %>
+</head>
+
+<header>
+  <div style="">
+    <h1 align="center">REST API Docs</h1>
+  </div>
+
+  <% include partials/header.ejs %>
+</header>
+
+<body>
+
+        <!-- <div class="container" style="text-align: center">
+
+        <h2>GET</h2>
+
+        <h3><a href="restapi/account/show" style="text-decoration: none">account/show</a><h3>
+
+        <h3><a href="restapi/account/show/:id" style="text-decoration: none">account/show/:id</a><h3>
+
+        <h3><a href="restapi/contactform/show" style="text-decoration: none">contactform/show</a><h3>
+
+        <h3><a href="restapi/contactform/show/:id" style="text-decoration: none">contactform/show/:id</a><h3>
+
+        <h2>POST</h2>
+
+        <h3><a href="restapi/account/create" style="text-decoration: none">account/create</a></h3>
+
+        <h3><a href="restapi/contactform/create" style="text-decoration: none">contactform/create</a></h3>
+
+        <h2>PATCH</h2>
+
+        <h3><a href="restapi/account/update/:id" style="text-decoration: none">account/update/:id</a></h3>
+
+        <h2>DELETE</h2>
+
+        <h3><a href="restapi/account/remove/:id" style="text-decoration: none">account/remove/:id</a></h3>
+
+    </div> -->
+
+    <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+              <ul class="nav nav-pills nav-stacked admin-menu">
+                  <li class="active"><a data-target-id="get"><b>GET</b></a></li>
+                  <li><a href="#" data-target-id="account-show">account/show</a></li>
+                  <li><a href="#" data-target-id="account-show-id">account/show/:id</a></li>
+                  <li><a href="#" data-target-id="contactform-show">contactform/show</a></li>
+                  <li><a href="#" data-target-id="contactform-show-id">contactform/show/:id</a></li>
+                  <li><a data-target-id="post"><b>POST</b></a></li>
+                  <li><a href="#" data-target-id="account-create">account/create</a></li>
+                  <li><a href="#" data-target-id="contactform-create">contactform/create</a></li>
+                  <li><a data-target-id="patch"><b>PATCH</b></a></li>
+                  <li><a href="#" data-target-id="account-update-id">account/update</a></li>
+                  <li><a data-target-id="delete"><b>DELETE</b></a></li>
+                  <li><a href="#" data-target-id="account-delete-id">account/delete/:id</a></li>
+              </ul>
+          </div>
+          <div class="col-md-9 well admin-content" id="get">
+              GET Requests
+          </div>
+          <div class="col-md-9 well admin-content" id="post">
+              POST Requests
+          </div>
+          <div class="col-md-9 well admin-content" id="patch">
+              PATCH Requests
+          </div>
+          <div class="col-md-9 well admin-content" id="delete">
+              DELETE Requests
+          </div>
+          <div class="col-md-9 well admin-content" id="account-show">
+            <div class="jumbotron">
+              <div class="container">
+                <h2 class="display-4">GET account/show</h2>
+                <p class="lead">Get a list of all the accounts stored in the Database</p>
+                <hr class="my-4">
+                <h2>Example Request</h2>
+                <p>http://localhost:3000/account/show</p>
+                <hr class="my-4">
+                <h2>Parameters</h2>
+                <hr class="my-4">
+                <h2>Resource Information</h2>
+                <p>Response formats: JSON</p>
+                <p>Requires Authentication? No</p>
+                <hr class="my-4">
+                <h2>Example Response</h2>
+                <p>
+                  <pre>
+                  <code>
+{
+      "users": [
+            {
+                  "_id": "5a565c2e552873225443f2ab",
+                  "email": "user1@email.com",
+                  "firstName": "User1",
+                  "lastName": "User1",
+                  "password": "spongebob",
+                  "__v": 0,
+                  "createdAt": "2018-01-10T18:32:14.095Z"
+            },
+            {
+                  "_id": "5a565c38552873225443f2ac",
+                  "email": "user2@email.com",
+                  "firstName": "User2",
+                  "lastName": "User2",
+                  "password": "rainbows",
+                  "__v": 0,
+                  "createdAt": "2018-01-10T18:32:24.934Z"
+            }
+      ]
+}
+                  </code>
+                  </pre>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 well admin-content" id="account-show-id">
+            <div class="jumbotron">
+              <div class="container">
+                <h2 class="display-4">GET account/show/:id</h2>
+                <p class="lead">Get a single account stored in the Database</p>
+                <hr class="my-4">
+                <h2>Example Request</h2>
+                <p>http://localhost:3000/account/show/{id}</p>
+                <hr class="my-4">
+                <h2>Resource Information</h2>
+                <p>Response formats: JSON</p>
+                <p>Requires Authentication? No</p>
+                <hr class="my-4">
+                <h2>Example Response</h2>
+                <p>
+                  <pre>
+                  <code>
+{
+      "user": {
+                  "_id": "5a565c2e552873225443f2ab",
+                  "email": "user1@email.com",
+                  "firstName": "User1",
+                  "lastName": "User1",
+                  "password": "spongebob",
+                  "__v": 0,
+                  "createdAt": "2018-01-10T18:32:14.095Z"
+              }
+}
+                  </code>
+                  </pre>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 well admin-content" id="contactform-show">
+            <div class="jumbotron">
+              <div class="container">
+                <h2 class="display-4">GET contactform/show</h2>
+                <p class="lead">Get a list of all the contactforms stored in the Database</p>
+                <hr class="my-4">
+                <h2>Example Request</h2>
+                <p>http://localhost:3000/contactform/show</p>
+                <hr class="my-4">
+                <h2>Resource Information</h2>
+                <p>Response formats: JSON</p>
+                <p>Requires Authentication? No</p>
+                <hr class="my-4">
+                <h2>Example Response</h2>
+                <p>
+                  <pre>
+                  <code>
+{
+      "forms": [
+            {
+                  "_id": "5a565a3572a9a92244d82e2d",
+                  "name": "User1",
+                  "email": "user@email.com",
+                  "subject": "Suggestions",
+                  "message": "Make the navigation user friendly",
+                  "__v": 0,
+                  "createdAt": "2018-01-10T18:23:49.199Z"
+            },
+            {
+                  "_id": "5a565a4a72a9a92244d82e2e",
+                  "name": "User2",
+                  "email": "user2@email.com",
+                  "subject": "Get in touch",
+                  "message": "I'd love to talk to you!",
+                  "__v": 0,
+                  "createdAt": "2018-01-10T18:24:10.809Z"
+            }
+      ]
+}
+                  </code>
+                  </pre>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 well admin-content" id="contactform-show-id">
+            <div class="jumbotron">
+              <div class="container">
+                <h2 class="display-4">GET contactform/show/:id</h2>
+                <p class="lead">Get a single contactform stored in the Database</p>
+                <hr class="my-4">
+                <h2>Example Request</h2>
+                <p>http://localhost:3000/contactform/show/{id}</p>
+                <hr class="my-4">
+                <h2>Resource Information</h2>
+                <p>Response formats: JSON</p>
+                <p>Requires Authentication? No</p>
+                <hr class="my-4">
+                <h2>Example Response</h2>
+                <p>
+                  <pre>
+                  <code>
+{
+      "form": {
+                  "_id": "5a565a3572a9a92244d82e2d",
+                  "name": "User1",
+                  "email": "user@email.com",
+                  "subject": "Suggestions",
+                  "message": "Make the navigation user friendly",
+                  "__v": 0,
+                  "createdAt": "2018-01-10T18:23:49.199Z"
+              }
+}
+                  </code>
+                  </pre>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 well admin-content" id="account-create">
+            <div class="jumbotron">
+              <div class="container">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 well admin-content" id="contactform-create">
+            <div class="jumbotron">
+              <div class="container">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 well admin-content" id="account-update-id">
+            <div class="jumbotron">
+              <div class="container">
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-9 well admin-content" id="account-delete-id">
+            <div class="jumbotron">
+              <div class="container">
+
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+
+  <script>
+  $(document).ready(function()
+  {
+      var navItems = $('.admin-menu li > a');
+      var navListItems = $('.admin-menu li');
+      var allWells = $('.admin-content');
+      var allWellsExceptFirst = $('.admin-content:not(:first)');
+
+      allWellsExceptFirst.hide();
+      navItems.click(function(e)
+      {
+          e.preventDefault();
+          navListItems.removeClass('active');
+          $(this).closest('li').addClass('active');
+
+          allWells.hide();
+          var target = $(this).attr('data-target-id');
+          $('#' + target).show();
+      });
+  });
+  </script>
+
+  <footer>
+    <% include partials/footer.ejs %>
+  </footer>
+
+</body>
+
+</html>

@@ -22,12 +22,14 @@
         <div id="chatContent"></div>
         <hr />
 
+        <form onsubmit="return false">
         <div class="form-group" id="maindiv">
           <div class="form-group col-xs-12">
             <input class="form-control" id="messageInput" type="text" maxlength="50"/>
             <button type="submit" class="btn btn-primary btn-block" onclick="send();">Send</button>
           </div>
         </div>
+      </form>
       </div>
     </div>
   </div>
@@ -60,29 +62,7 @@
     socket.emit('chat', document.getElementById('messageInput').value, username);
     document.getElementById('messageInput').value = '';
   }
-
-  $(document).ready(function() {
-    $(window).scroll(function() {
-      if ($(this).scrollTop() > 50) {
-        $('#back-to-top').fadeIn();
-      } else {
-        $('#back-to-top').fadeOut();
-      }
-    });
-    $('#back-to-top').click(function() {
-      $('#back-to-top').tooltip('hide');
-      $('body,html').animate({
-        scrollTop: 0
-      }, 800);
-      return false;
-    });
-    $('#back-to-top').tooltip('show');
-  });
   </script>
-
-  <div style="position:fixed; bottom:20px; right:20px;">
-    <a id="back-to-top" href="#" class="btn btn-primary btn-lg back-to-top" role="button" data-toggle="tooltip" data-placement="left"><span class="glyphicon glyphicon-chevron-up"></span></a>
-  </div>
 
   <footer>
     <% include partials/footer.ejs %>

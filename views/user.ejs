@@ -7,15 +7,72 @@
 
 <header>
   <div style="">
-    <h1 align="center">Welcome user!</h1>
+    <h1 align="center">Welcome User!</h1>
   </div>
 
   <% include partials/header.ejs %>
 </header>
 
 <body>
+
   <div class="container">
-  </div>
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked admin-menu">
+                <li class="active"><a href="#" data-target-id="home">Home</a></li>
+                <li><a href="#" data-target-id="Profile">Profile</a></li>
+                <li><a href="#" data-target-id="Activity">Activity</a></li>
+                <li><a href="#" data-target-id="Devices">Devices</a></li>
+                <li><a href="#" data-target-id="Messaging">Messaging</a></li>
+                <li><a href="#" data-target-id="InstallationJobs">Installation Jobs</a></li>
+                <li><a href="#" data-target-id="Settings">Settings</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9 well admin-content" id="home">
+            Home
+        </div>
+        <div class="col-md-9 well admin-content" id="Profile">
+            Widgets
+        </div>
+        <div class="col-md-9 well admin-content" id="Activity">
+            Pages
+        </div>
+        <div class="col-md-9 well admin-content" id="Devices">
+            Charts
+        </div>
+        <div class="col-md-9 well admin-content" id="Messaging">
+            Table
+        </div>
+        <div class="col-md-9 well admin-content" id="InstallationJobs">
+            Forms
+        </div>
+        <div class="col-md-9 well admin-content" id="Settings">
+            Settings
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function()
+{
+    var navItems = $('.admin-menu li > a');
+    var navListItems = $('.admin-menu li');
+    var allWells = $('.admin-content');
+    var allWellsExceptFirst = $('.admin-content:not(:first)');
+
+    allWellsExceptFirst.hide();
+    navItems.click(function(e)
+    {
+        e.preventDefault();
+        navListItems.removeClass('active');
+        $(this).closest('li').addClass('active');
+
+        allWells.hide();
+        var target = $(this).attr('data-target-id');
+        $('#' + target).show();
+    });
+});
+</script>
 
   <footer>
     <% include partials/footer.ejs %>

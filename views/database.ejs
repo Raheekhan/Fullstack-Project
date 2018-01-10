@@ -3,41 +3,66 @@
 
 <head>
   <% include partials/head.ejs %>
+    <script type="text/javascript">
+    var itemRe = /item*/;
+    }
+    </script>
 </head>
 
 <header>
   <div style="">
-    <h1 align="center">Database</h1>
+    <h1 align="center">Database Testing</h1>
   </div>
 
   <% include partials/header.ejs %>
 </header>
 
 <body>
-  <h1 align="center">REST API</h1> <br/>
+
   <div class="container">
     <div class="col-sm-12 pull-center well">
-      <form class="form-inline">
+      <form class="form-inline" method="get" action="/responseData">
         <center>
           <select class="form-control">
-                <option>GET</option>
-                <option>POST</option>
-                <option>DELETE</option>
+                <option id="getrequest" name="getrequest">GET</option>
+                <option id="postrequest" name="postrequest">POST</option>
+                <option id="deleterequest" name="deleterequest">DELETE</option>
         </select>
 
-          <form method="get">
             <div class="input-group custom-search-form">
-              <input type="text" id="input-field" class="form-control" placeholder="Email or ID">
+              <input type="text" id="input-field" class="form-control" placeholder="">
               <span class="input-group-btn">
-              <button class="btn btn-default" id="btn-db" type="button">
+              <button class="btn btn-default" id="btn-db" type="submit">
                 <i>Go</i>
               </button>
               </span>
             </div>
-          </form>
       </form>
     </div>
   </div>
+
+    <div class="container">
+      <div class="jumbotron">
+        <h2>Instructions</h2>
+        <h3>GET</h3>
+        <p>
+            Enter email or ID to retrieve data stored in the Database.</br>
+            To get a list of all Data, simply click on <b>Go</b> with an empty form.
+        </p>
+
+        <h3>POST</h3>
+        <p>
+          Enter email to store data in the Database.</br>
+          Duplicates are not allowed and will return a <b>400</b> status code.
+        </p>
+
+        <h3>DELETE</h3>
+        <p>
+          Enter email to delete data from the Database.</br>
+          If email exists, it will be deleted, otherwise it will return <b>404</b> status code.
+        </p>
+      </div>
+    </div>
 
   <script>
 

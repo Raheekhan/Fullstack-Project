@@ -6,13 +6,13 @@ const {ObjectID} = require('mongodb');
 
 var app = express();
 
-// const store = require('./models/store');
 var {mongoose} = require('./db/mongoose');
 var {User} = require('./models/user');
 var {contactForm} = require('./models/contactForm');
+var {responseData} = require('./models/responseData');
 
-// var http = require('http').Server(app);
-// var io = require('socket.io')(http);
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // var router = express.Router();
 
@@ -23,12 +23,12 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.json());
 
-// io.on('connection', (socket) => {
-//   socket.on('chat', (message, username) => {
-//     console.log(`Sent by ${username}, content: ${message}`);
-//     io.emit('chat', message, username);
-//   });
-// });
+io.on('connection', (socket) => {
+  socket.on('chat', (message, username) => {
+    console.log(`Sent by ${username}, content: ${message}`);
+    io.emit('chat', message, username);
+  });
+});
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -39,7 +39,7 @@ app.post('/login', (req, res) => {
   var user = new User(body);
 
   user.save().then(() => {
-    res.render('registered');
+    res.render('user');
   }).catch((e) => {
     res.status(400).send(e);
   });
@@ -49,7 +49,7 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
-app.get('/register', (req, res) => {
+app.get('/account/show', (req, res) => {
   User.find().then((users) => {
     res.send({users});
   }, (e) => {
@@ -57,7 +57,7 @@ app.get('/register', (req, res) => {
   });
 });
 
-app.get('/register/:id', (req, res) => {
+app.get('/account/show/:id', (req, res) => {
   var id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
@@ -77,7 +77,7 @@ app.get('/register/:id', (req, res) => {
 
 // Same functionality as post function above '/login'
 // But this function is aimed for Postman Users.
-app.post('/register', (req, res) => {
+app.post('/account/create', (req, res) => {
   var body = _.pick(req.body, ['email', 'firstName', 'lastName', 'password']);
   var user = new User(body);
 
@@ -88,7 +88,7 @@ app.post('/register', (req, res) => {
   });
 });
 
-app.delete('/register/:id', (req, res) => {
+app.delete('/account/remove/:id', (req, res) => {
   var id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
@@ -106,9 +106,9 @@ app.delete('/register/:id', (req, res) => {
   });
 });
 
-app.patch('/register/:id', (req, res) => {
+app.patch('/account/update/:id', (req, res) => {
   var id = req.params.id;
-  var body = _.pick(req.body, ['email', 'firstName', 'lastName', 'password']);
+  var body = _.pick(req.body, ['email', 'firstName', 'lastName', 'password', 'createdAt']);
 
   if (!ObjectID.isValid(id)) {
     return res.status(404).send();
@@ -123,6 +123,10 @@ app.patch('/register/:id', (req, res) => {
   }).catch((e) => {
     res.status(400).send(e);
   });
+});
+
+app.get('/signup', (req, res) => {
+  res.render('signup');
 });
 
 app.get('/home', (req, res) => {
@@ -149,7 +153,7 @@ app.get('/chatroom', (req, res) => {
   res.render('chatroom');
 });
 
-app.get('/contactform', (req, res) => {
+app.get('/contactform/show', (req, res) => {
   contactForm.find().then((forms) => {
     res.send({forms});
   }), (e) => {
@@ -157,7 +161,7 @@ app.get('/contactform', (req, res) => {
   };
 });
 
-app.get('/contactform/:id', (req, res) => {
+app.get('/contactform/show/:id', (req, res) => {
   var id = req.params.id;
 
   if (!ObjectID.isValid(id)) {
@@ -175,7 +179,7 @@ app.get('/contactform/:id', (req, res) => {
   });
 });
 
-app.post('/contactform', (req, res) => {
+app.post('/contactform/create', (req, res) => {
   var body = _.pick(req.body, ['name', 'email', 'subject', 'message', 'createdAt']);
   var contactform = new contactForm(body);
 
@@ -194,11 +198,15 @@ app.post('/contact', (req, res) => {
     })
       .catch(err => {
         res.status(400).send('Unable to save to database');
-      })
+      });
 });
 
 app.get('/contact', (req, res) => {
   res.render('contact');
+});
+
+app.get('/restapi', (req, res) => {
+  res.render('restapi');
 });
 
 app.get('/user', (req, res) => {
@@ -209,7 +217,64 @@ app.get('/chaterror', (req, res) => {
   res.render('chaterror');
 });
 
+<!-- Database Site -->
+
+app.get('/responseData', (req, res) => {
+  responseData.find().then((users) => {
+    res.send({users});
+  }, (e) => {
+    res.status(400).send(e);
+  });
+});
+
+app.get('/responseData/:id', (req, res) => {
+  var id = req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  responseData.findById(id).then((user) => {
+    if (!user) {
+      return res.status(404).send();
+    }
+
+    res.send({user});
+  }).catch((e) => {
+    res.status(400).send();
+  });
+});
+
+app.post('/responseData', (req, res) => {
+  var body = _.pick(req.body, ['email']);
+  var user = new responseData(body);
+
+  user.save().then(() => {
+    res.send(user);
+  }).catch((e) => {
+    res.status(400).send(e);
+  });
+});
+
+app.delete('/responseData/:id', (req, res) => {
+  var id = req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+    return res.status(404).send();
+  }
+
+  responseData.findByIdAndRemove(id).then((user) => {
+    if (!user) {
+      return res.status(404).send();
+    }
+
+    res.send({user});
+  }).catch((e) => {
+    res.status(400).send(e);
+  });
+});
+
 var port = 3000;
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Listening to port ${port}`);
 });
