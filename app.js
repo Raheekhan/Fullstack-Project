@@ -49,6 +49,7 @@ app.get('/login', (req, res) => {
   res.render('login');
 });
 
+<!-- REST API -->
 app.get('/account/show', (req, res) => {
   User.find().then((users) => {
     res.send({users});
@@ -153,6 +154,7 @@ app.get('/chatroom', (req, res) => {
   res.render('chatroom');
 });
 
+<!-- REST API -->
 app.get('/contactform/show', (req, res) => {
   contactForm.find().then((forms) => {
     res.send({forms});
@@ -218,7 +220,6 @@ app.get('/chaterror', (req, res) => {
 });
 
 <!-- Database Site -->
-
 app.get('/responseData', (req, res) => {
   responseData.find().then((users) => {
     res.send({users});

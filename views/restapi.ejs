@@ -13,7 +13,7 @@
   <% include partials/header.ejs %>
 </header>
 
-<body>
+<body style="background-color: #F8F8FF">
 
         <!-- <div class="container" style="text-align: center">
 
@@ -48,30 +48,46 @@
           <div class="col-md-3">
               <ul class="nav nav-pills nav-stacked admin-menu">
                   <li class="active"><a data-target-id="get"><b>GET</b></a></li>
-                  <li><a href="#" data-target-id="account-show">account/show</a></li>
-                  <li><a href="#" data-target-id="account-show-id">account/show/:id</a></li>
-                  <li><a href="#" data-target-id="contactform-show">contactform/show</a></li>
-                  <li><a href="#" data-target-id="contactform-show-id">contactform/show/:id</a></li>
+                  <li><a href="#" id="acc-show" data-target-id="account-show">account/show</a></li>
+                  <li><a href="#" id="acc-show-id" data-target-id="account-show-id">account/show/:id</a></li>
+                  <li><a href="#" id="cont-show" data-target-id="contactform-show">contactform/show</a></li>
+                  <li><a href="#" id="cont-show-id" data-target-id="contactform-show-id">contactform/show/:id</a></li>
                   <li><a data-target-id="post"><b>POST</b></a></li>
-                  <li><a href="#" data-target-id="account-create">account/create</a></li>
-                  <li><a href="#" data-target-id="contactform-create">contactform/create</a></li>
+                  <li><a href="#" id="acc-create" data-target-id="account-create">account/create</a></li>
+                  <li><a href="#" id="cont-create" data-target-id="contactform-create">contactform/create</a></li>
                   <li><a data-target-id="patch"><b>PATCH</b></a></li>
-                  <li><a href="#" data-target-id="account-update-id">account/update</a></li>
+                  <li><a href="#" id="acc-upt" data-target-id="account-update-id">account/update/:id</a></li>
                   <li><a data-target-id="delete"><b>DELETE</b></a></li>
-                  <li><a href="#" data-target-id="account-delete-id">account/delete/:id</a></li>
+                  <li><a href="#" id="acc-del" uddata-target-id="account-delete-id">account/delete/:id</a></li>
               </ul>
           </div>
           <div class="col-md-9 well admin-content" id="get">
-              GET Requests
+            <div class="jumbotron">
+              <h2>GET Requests</h2>
+              <p>Get data from the Database and view it as JSON format.<p>
+              <p>Navigate through the list on the left to find <b>GET</b> Requests.</p>
+            </div>
           </div>
           <div class="col-md-9 well admin-content" id="post">
-              POST Requests
+            <div class="jumbotron">
+              <h2>POST Requests</h2>
+              <p>Insert data to the Database and view it as JSON format.<p>
+              <p>Navigate through the list on the left to find <b>POST</b> Requests.</p>
+            </div>
           </div>
           <div class="col-md-9 well admin-content" id="patch">
-              PATCH Requests
+            <div class="jumbotron">
+              <h2>PATCH Requests</h2>
+              <p>Update data from the Database and view it as JSON format.<p>
+              <p>Navigate through the list on the left to find <b>PATCH</b> Requests.</p>
+            </div>
           </div>
           <div class="col-md-9 well admin-content" id="delete">
-              DELETE Requests
+            <div class="jumbotron">
+              <h2>DELETE Requests</h2>
+              <p>Delete data from the Database and view it as JSON format.<p>
+              <p>Navigate through the list on the left to find <b>DELETE</b> Requests.</p>
+            </div>
           </div>
           <div class="col-md-9 well admin-content" id="account-show">
             <div class="jumbotron">
@@ -83,6 +99,7 @@
                 <p>http://localhost:3000/account/show</p>
                 <hr class="my-4">
                 <h2>Parameters</h2>
+                <p>Test</p>
                 <hr class="my-4">
                 <h2>Resource Information</h2>
                 <p>Response formats: JSON</p>
@@ -129,6 +146,9 @@
                 <h2>Example Request</h2>
                 <p>http://localhost:3000/account/show/{id}</p>
                 <hr class="my-4">
+                <h2>Parameters</h2>
+                <p>Test</p>
+                <hr class="my-4">
                 <h2>Resource Information</h2>
                 <p>Response formats: JSON</p>
                 <p>Requires Authentication? No</p>
@@ -162,6 +182,9 @@
                 <hr class="my-4">
                 <h2>Example Request</h2>
                 <p>http://localhost:3000/contactform/show</p>
+                <hr class="my-4">
+                <h2>Parameters</h2>
+                <p>Test</p>
                 <hr class="my-4">
                 <h2>Resource Information</h2>
                 <p>Response formats: JSON</p>
@@ -208,6 +231,9 @@
                 <h2>Example Request</h2>
                 <p>http://localhost:3000/contactform/show/{id}</p>
                 <hr class="my-4">
+                <h2>Parameters</h2>
+                <p>Test</p>
+                <hr class="my-4">
                 <h2>Resource Information</h2>
                 <p>Response formats: JSON</p>
                 <p>Requires Authentication? No</p>
@@ -236,14 +262,70 @@
           <div class="col-md-9 well admin-content" id="account-create">
             <div class="jumbotron">
               <div class="container">
-
+                <h2 class="display-4">POST account/create</h2>
+                <p class="lead">Create a single user and store it in the Database</p>
+                <hr class="my-4">
+                <h2>Example Request</h2>
+                <p>http://localhost:3000/account/create</p>
+                <hr class="my-4">
+                <h2>Parameters</h2>
+                <p>Test</p>
+                <hr class="my-4">
+                <h2>Resource Information</h2>
+                <p>Response formats: JSON</p>
+                <p>Requires Authentication? No</p>
+                <hr class="my-4">
+                <h2>Example Response</h2>
+                <p>
+                  <pre>
+                  <code>
+{
+        "__v": 0,
+        "email": "postman@rocks.com",
+        "firstName": "Doctor",
+        "lastName": "Strange",
+        "password": "forcewithu",
+        "_id": "5a56ab111041ca25e1e0e4c1",
+        "createdAt": "2018-01-11T00:08:49.714Z"
+}
+                  </code>
+                  </pre>
+                  </p>
               </div>
             </div>
           </div>
           <div class="col-md-9 well admin-content" id="contactform-create">
             <div class="jumbotron">
               <div class="container">
-
+                <h2 class="display-4">POST contactform/create</h2>
+                <p class="lead">Create a single contactform and store it in the Database</p>
+                <hr class="my-4">
+                <h2>Example Request</h2>
+                <p>http://localhost:3000/contactform/create</p>
+                <hr class="my-4">
+                <h2>Parameters</h2>
+                <p>Test</p>
+                <hr class="my-4">
+                <h2>Resource Information</h2>
+                <p>Response formats: JSON</p>
+                <p>Requires Authentication? No</p>
+                <hr class="my-4">
+                <h2>Example Response</h2>
+                <p>
+                  <pre>
+                  <code>
+{
+        "__v": 0,
+        "name": "Spongebob Squarepants",
+        "email": "user@email.com",
+        "subject": "Suggestions",
+        "message": "Your Message",
+        "_id": "5a56a9951041ca25e1e0e4c0",
+        "createdAt": "2018-01-11T00:02:29.575Z"
+}
+                  </code>
+                  </pre>
+                  </p>
               </div>
             </div>
           </div>
